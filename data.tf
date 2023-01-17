@@ -13,6 +13,7 @@ data "azurerm_key_vault" "password_kv" {
 }
 
 data "azurerm_shared_image" "image" {
+  provider            = azurerm.images
   for_each            = { for k in var.shared_images : k.name => k }
   name                = each.key
   gallery_name        = each.value["shared_image_gallery_name"]
