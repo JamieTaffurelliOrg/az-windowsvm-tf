@@ -72,7 +72,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
     azurerm_network_interface.nic[(each.key)].id
   ]
   zone                       = each.value["zone"]
-  source_image_id            = data.azurerm_shared_image.image["image_reference"].id
+  source_image_id            = data.azurerm_shared_image.image[(each.value["image_reference"])].id
   allow_extension_operations = true
   enable_automatic_updates   = false
   timezone                   = each.value["timezone"]
