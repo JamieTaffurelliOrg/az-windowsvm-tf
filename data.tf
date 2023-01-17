@@ -27,7 +27,6 @@ data "azurerm_log_analytics_workspace" "logs" {
 }
 
 data "azurerm_storage_account" "diag" {
-  provider            = azurerm.logs
   name                = var.storage_account_name
   resource_group_name = var.storage_account_resource_group_name
 }
