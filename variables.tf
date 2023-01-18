@@ -20,9 +20,16 @@ variable "windows_virtual_machines" {
       size                          = string
       admin_username                = string
       zone                          = string
-      image_reference               = string
-      timezone                      = string
-      os_disk_size_gb               = optional(number, 127)
+      //image_reference               = string
+      source_image = object(
+        {
+          publisher = string
+          offer     = string
+          sku       = string
+        }
+      )
+      timezone        = string
+      os_disk_size_gb = optional(number, 127)
       disks = optional(list(object({
         name         = string
         disk_size_gb = number
@@ -63,7 +70,7 @@ variable "password_key_vault_resource_group_name" {
   description = "Resource Group name of the Key Vault to place admin passwords"
 }
 
-variable "shared_images" {
+/*variable "shared_images" {
   type = list(object(
     {
       name                                     = string
@@ -72,7 +79,7 @@ variable "shared_images" {
     }
   ))
   description = "The shared images to use for deploying virtual machines"
-}
+}*/
 
 variable "log_analytics_workspace_name" {
   type        = string

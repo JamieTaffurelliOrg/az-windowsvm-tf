@@ -12,13 +12,13 @@ data "azurerm_key_vault" "password_kv" {
   resource_group_name = var.password_key_vault_resource_group_name
 }
 
-data "azurerm_shared_image" "image" {
+/*data "azurerm_shared_image" "image" {
   provider            = azurerm.images
   for_each            = { for k in var.shared_images : k.name => k }
   name                = each.key
   gallery_name        = each.value["shared_image_gallery_name"]
   resource_group_name = each.value["shared_image_gallery_resource_group_name"]
-}
+}*/
 
 data "azurerm_log_analytics_workspace" "logs" {
   provider            = azurerm.logs
