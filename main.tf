@@ -71,8 +71,14 @@ resource "azurerm_windows_virtual_machine" "vm" {
   network_interface_ids = [
     azurerm_network_interface.nic[(each.key)].id
   ]
-  zone                       = each.value["zone"]
-  source_image_id            = data.azurerm_shared_image.image[(each.value["image_reference"])].id
+  zone = each.value["zone"]
+  //source_image_id            = data.azurerm_shared_image.image[(each.value["image_reference"])].id
+  source_image_reference {
+    publisher = each.value["source_image"].publisher
+    offer     = each.value["source_image"].offer
+    sku       = each.value["source_image"].sku
+    version   = "latest"
+  }
   allow_extension_operations = true
   enable_automatic_updates   = false
   timezone                   = each.value["timezone"]
