@@ -13,7 +13,6 @@
 | Name | Version |
 |------|---------|
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 3.20 |
-| <a name="provider_azurerm.images"></a> [azurerm.images](#provider\_azurerm.images) | ~> 3.20 |
 | <a name="provider_azurerm.logs"></a> [azurerm.logs](#provider\_azurerm.logs) | ~> 3.20 |
 | <a name="provider_random"></a> [random](#provider\_random) | ~> 3.3.0 |
 
