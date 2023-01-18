@@ -28,8 +28,12 @@ variable "windows_virtual_machines" {
           sku       = string
         }
       )
-      timezone        = string
-      os_disk_size_gb = optional(number, 127)
+      enable_automatic_updates = optional(bool, false)
+      hotpatching_enabled      = optional(bool, false)
+      patch_assessment_mode    = optional(string, "ImageDefault")
+      patch_mode               = optional(string, "Manual")
+      timezone                 = string
+      os_disk_size_gb          = optional(number, 127)
       disks = optional(list(object({
         name         = string
         disk_size_gb = number

@@ -80,7 +80,10 @@ resource "azurerm_windows_virtual_machine" "vm" {
     version   = "latest"
   }
   allow_extension_operations = true
-  enable_automatic_updates   = false
+  enable_automatic_updates   = each.value["enable_automatic_updates"]
+  hotpatching_enabled        = each.value["hotpatching_enabled"]
+  patch_assessment_mode      = each.value["patch_assessment_mode"]
+  patch_mode                 = each.value["patch_mode"]
   timezone                   = each.value["timezone"]
 
   identity {
