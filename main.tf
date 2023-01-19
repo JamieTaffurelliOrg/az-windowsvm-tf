@@ -298,12 +298,12 @@ resource "azurerm_mssql_virtual_machine" "vm" {
 
     data_settings {
       default_file_path = each.value.sql["data_file_path"]
-      luns              = each.value.sql["data_lun"]
+      luns              = each.value.sql["data_luns"]
     }
 
     log_settings {
       default_file_path = each.value.sql["log_file_path"]
-      luns              = each.value.sql["log_lun"]
+      luns              = each.value.sql["log_luns"]
     }
   }
 
