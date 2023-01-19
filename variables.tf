@@ -43,9 +43,9 @@ variable "windows_virtual_machines" {
       sql = optional(object(
         {
           data_file_path = string
-          data_lun       = string
+          data_luns      = list(number)
           log_file_path  = string
-          log_lun        = string
+          log_luns       = list(number)
         }
       ))
     }
