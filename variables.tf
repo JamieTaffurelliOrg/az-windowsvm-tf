@@ -8,6 +8,26 @@ variable "location" {
   description = "Location of the Virtual Network"
 }
 
+variable "load_balancers" {
+  type = list(object(
+    {
+      name                = string
+      resource_group_name = string
+    }
+  ))
+  description = "Windows virtual machines to deploy"
+}
+
+variable "backend_address_pools" {
+  type = list(object(
+    {
+      name                    = string
+      load_balancer_reference = string
+    }
+  ))
+  description = "Windows virtual machines to deploy"
+}
+
 variable "windows_virtual_machines" {
   type = list(object(
     {
