@@ -31,7 +31,7 @@ No modules.
 | [azurerm_monitor_diagnostic_setting.virtual_machine_diagnostics](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
 | [azurerm_mssql_virtual_machine.vm](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/mssql_virtual_machine) | resource |
 | [azurerm_network_interface.nic](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface) | resource |
-| [azurerm_network_interface_backend_address_pool_association.example](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_backend_address_pool_association) | resource |
+| [azurerm_network_interface_backend_address_pool_association.backend_address_pool_association](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/network_interface_backend_address_pool_association) | resource |
 | [azurerm_virtual_machine_data_disk_attachment.disk](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine_data_disk_attachment) | resource |
 | [azurerm_virtual_machine_extension.av](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine_extension) | resource |
 | [azurerm_virtual_machine_extension.bg](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine_extension) | resource |
@@ -54,8 +54,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_backend_address_pools"></a> [backend\_address\_pools](#input\_backend\_address\_pools) | Windows virtual machines to deploy | <pre>list(object(<br>    {<br>      name                    = string<br>      load_balancer_reference = string<br>    }<br>  ))</pre> | n/a | yes |
-| <a name="input_load_balancers"></a> [load\_balancers](#input\_load\_balancers) | Windows virtual machines to deploy | <pre>list(object(<br>    {<br>      name                = string<br>      resource_group_name = string<br>    }<br>  ))</pre> | n/a | yes |
+| <a name="input_backend_address_pools"></a> [backend\_address\_pools](#input\_backend\_address\_pools) | Backend address pools to join NIC | <pre>list(object(<br>    {<br>      name                    = string<br>      load_balancer_reference = string<br>    }<br>  ))</pre> | `[]` | no |
+| <a name="input_load_balancers"></a> [load\_balancers](#input\_load\_balancers) | Load balancers to join NIC to backen address pool | <pre>list(object(<br>    {<br>      name                = string<br>      resource_group_name = string<br>    }<br>  ))</pre> | `[]` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the Virtual Network | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_name"></a> [log\_analytics\_workspace\_name](#input\_log\_analytics\_workspace\_name) | Name of Log Analytics Workspace to send diagnostics | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_resource_group_name"></a> [log\_analytics\_workspace\_resource\_group\_name](#input\_log\_analytics\_workspace\_resource\_group\_name) | Resource Group of Log Analytics Workspace to send diagnostics | `string` | n/a | yes |
