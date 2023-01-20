@@ -54,8 +54,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_backend_address_pools"></a> [backend\_address\_pools](#input\_backend\_address\_pools) | Windows virtual machines to deploy | <pre>list(object(<br>    {<br>      name                    = string<br>      load_balancer_reference = string<br>    }<br>  ))</pre> | n/a | yes |
-| <a name="input_load_balancers"></a> [load\_balancers](#input\_load\_balancers) | Windows virtual machines to deploy | <pre>list(object(<br>    {<br>      name                = string<br>      resource_group_name = string<br>    }<br>  ))</pre> | n/a | yes |
+| <a name="input_backend_address_pools"></a> [backend\_address\_pools](#input\_backend\_address\_pools) | Backend address pools to join NIC | <pre>list(object(<br>    {<br>      name                    = string<br>      load_balancer_reference = string<br>    }<br>  ))</pre> | `[]` | no |
+| <a name="input_load_balancers"></a> [load\_balancers](#input\_load\_balancers) | Load balancers to join NIC to backen address pool | <pre>list(object(<br>    {<br>      name                = string<br>      resource_group_name = string<br>    }<br>  ))</pre> | `[]` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location of the Virtual Network | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_name"></a> [log\_analytics\_workspace\_name](#input\_log\_analytics\_workspace\_name) | Name of Log Analytics Workspace to send diagnostics | `string` | n/a | yes |
 | <a name="input_log_analytics_workspace_resource_group_name"></a> [log\_analytics\_workspace\_resource\_group\_name](#input\_log\_analytics\_workspace\_resource\_group\_name) | Resource Group of Log Analytics Workspace to send diagnostics | `string` | n/a | yes |
