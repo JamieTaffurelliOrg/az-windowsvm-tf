@@ -31,15 +31,16 @@ variable "backend_address_pools" {
 variable "windows_virtual_machines" {
   type = list(object(
     {
-      name                          = string
-      enable_accelerated_networking = optional(bool, true)
-      subnet_reference              = string
-      private_ip_address_version    = optional(string, "IPv4")
-      private_ip_address_allocation = optional(string, "Static")
-      private_ip_address            = optional(string)
-      size                          = string
-      admin_username                = string
-      zone                          = string
+      name                           = string
+      enable_accelerated_networking  = optional(bool, true)
+      subnet_reference               = string
+      private_ip_address_version     = optional(string, "IPv4")
+      private_ip_address_allocation  = optional(string, "Static")
+      private_ip_address             = optional(string)
+      backend_address_pool_reference = optional(string)
+      size                           = string
+      admin_username                 = string
+      zone                           = string
       //image_reference               = string
       source_image = object(
         {
