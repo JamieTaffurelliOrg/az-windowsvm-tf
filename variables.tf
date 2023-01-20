@@ -15,7 +15,8 @@ variable "load_balancers" {
       resource_group_name = string
     }
   ))
-  description = "Windows virtual machines to deploy"
+  default     = []
+  description = "Load balancers to join NIC to backen address pool"
 }
 
 variable "backend_address_pools" {
@@ -25,7 +26,8 @@ variable "backend_address_pools" {
       load_balancer_reference = string
     }
   ))
-  description = "Windows virtual machines to deploy"
+  default     = []
+  description = "Backend address pools to join NIC"
 }
 
 variable "windows_virtual_machines" {
