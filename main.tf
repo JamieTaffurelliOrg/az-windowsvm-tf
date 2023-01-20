@@ -19,7 +19,7 @@ resource "azurerm_network_interface" "nic" {
 
 resource "azurerm_network_interface_backend_address_pool_association" "example" {
   for_each                = { for k in var.windows_virtual_machines : k.name => k if k.backend_address_pool_reference != null }
-  network_interface_id    = azurerm_network_interface.nic[("${each.key}-nic-1")].id
+  network_interface_id    = azurerm_network_interface.nic[(each.key)].id
   ip_configuration_name   = "primary"
   backend_address_pool_id = data.azurerm_lb_backend_address_pool.backend_address_pool[(each.value["backend_address_pool_reference"])].id
 }
