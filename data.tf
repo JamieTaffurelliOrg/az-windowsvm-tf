@@ -7,6 +7,18 @@ data "azurerm_subnet" "subnet" {
   resource_group_name  = each.value["resource_group_name"]
 }
 
+data "azurerm_lb" "load_balancer" {
+  for_each            = { for k in var.load_balancers : k.name => k }
+  name                = each.key
+  resource_group_name = each.value["resource_group_name"]
+}
+
+data "azurerm_lb_backend_address_pool" "backend_address_pool" {
+  for_each        = { for k in var.backend_address_pools : k.name => k }
+  name            = each.key
+  loadbalancer_id = data.azurerm_lb.load_balancer[(each.value["load_balancer_reference"])].id
+}
+
 data "azurerm_key_vault" "password_kv" {
   name                = var.password_key_vault_name
   resource_group_name = var.password_key_vault_resource_group_name
