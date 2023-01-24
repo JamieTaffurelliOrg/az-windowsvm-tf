@@ -92,6 +92,8 @@ resource "azurerm_windows_virtual_machine" "vm" {
   patch_assessment_mode      = each.value["patch_assessment_mode"]
   patch_mode                 = each.value["patch_mode"]
   timezone                   = each.value["timezone"]
+  encryption_at_host_enabled = true
+  provision_vm_agent         = true
 
   identity {
     type = "SystemAssigned"
