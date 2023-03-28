@@ -264,6 +264,17 @@ resource "azurerm_virtual_machine_extension" "bg" {
   tags                       = var.tags
 }
 
+resource "azurerm_virtual_machine_extension" "aad_login" {
+  for_each                   = { for k in var.windows_virtual_machines : k.name => k }
+  name                       = "AADLoginForWindows"
+  virtual_machine_id         = azurerm_windows_virtual_machine.vm[(each.key)].id
+  publisher                  = "Microsoft.Azure.ActiveDirectory"
+  type                       = "AADLoginForWindows"
+  type_handler_version       = "2.1"
+  auto_upgrade_minor_version = true
+  tags                       = var.tags
+}
+
 resource "random_password" "sql_admin_password" {
   for_each         = { for k in var.windows_virtual_machines : k.name => k if k.sql != null }
   length           = 16
