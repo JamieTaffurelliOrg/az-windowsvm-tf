@@ -92,6 +92,8 @@ resource "azurerm_windows_virtual_machine" "vm" {
   patch_assessment_mode      = each.value["patch_assessment_mode"]
   patch_mode                 = each.value["patch_mode"]
   timezone                   = each.value["timezone"]
+  encryption_at_host_enabled = true
+  provision_vm_agent         = true
 
   identity {
     type = "SystemAssigned"
@@ -257,6 +259,17 @@ resource "azurerm_virtual_machine_extension" "bg" {
   virtual_machine_id         = azurerm_windows_virtual_machine.vm[(each.key)].id
   publisher                  = "Microsoft.Compute"
   type                       = "BGInfo"
+  type_handler_version       = "2.1"
+  auto_upgrade_minor_version = true
+  tags                       = var.tags
+}
+
+resource "azurerm_virtual_machine_extension" "aad_login" {
+  for_each                   = { for k in var.windows_virtual_machines : k.name => k }
+  name                       = "AADLoginForWindows"
+  virtual_machine_id         = azurerm_windows_virtual_machine.vm[(each.key)].id
+  publisher                  = "Microsoft.Azure.ActiveDirectory"
+  type                       = "AADLoginForWindows"
   type_handler_version       = "2.1"
   auto_upgrade_minor_version = true
   tags                       = var.tags
