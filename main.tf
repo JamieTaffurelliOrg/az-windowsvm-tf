@@ -68,6 +68,8 @@ resource "azurerm_key_vault_secret" "admin_password" {
 }
 
 resource "azurerm_windows_virtual_machine" "vm" {
+  #checkov:skip=CKV_AZURE_177:We may use another patching solution
+  #checkov:skip=CKV_AZURE_50:Extensions will be installed
   for_each            = { for k in var.windows_virtual_machines : k.name => k }
   name                = each.key
   resource_group_name = var.resource_group_name
@@ -119,6 +121,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
 }
 
 resource "azurerm_managed_disk" "disk" {
+  #checkov:skip=CKV_AZURE_93:CMK not required
   for_each             = { for k in local.disks : "${k.vm_name}-${k.disk_name}" => k if k != null }
   name                 = each.key
   resource_group_name  = var.resource_group_name
