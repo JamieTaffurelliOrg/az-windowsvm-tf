@@ -32,11 +32,6 @@ resource "azurerm_monitor_diagnostic_setting" "network_interface_diagnostics" {
 
   metric {
     category = "AllMetrics"
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 }
 
@@ -347,10 +342,5 @@ resource "azurerm_monitor_diagnostic_setting" "virtual_machine_diagnostics" {
 
   metric {
     category = "AllMetrics"
-
-    retention_policy {
-      enabled = true
-      days    = 365
-    }
   }
 }
