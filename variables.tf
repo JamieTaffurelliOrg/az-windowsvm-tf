@@ -118,16 +118,6 @@ variable "log_analytics_workspace_resource_group_name" {
   description = "Resource Group of Log Analytics Workspace to send diagnostics"
 }
 
-variable "storage_account_name" {
-  type        = string
-  description = "Name of Storage Account to send diagnostics"
-}
-
-variable "storage_account_resource_group_name" {
-  type        = string
-  description = "Resource Group of Storage Account to send diagnostics"
-}
-
 /*variable "data_collection_rule_name" {
   type        = string
   description = "Name of data collection rule to send diagnostics"
