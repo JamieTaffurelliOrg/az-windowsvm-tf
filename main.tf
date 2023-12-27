@@ -97,7 +97,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   }
 
   boot_diagnostics {
-    storage_account_uri = data.azurerm_storage_account.diag.primary_blob_endpoint
+    storage_account_uri = null
   }
 
   os_disk {
